@@ -361,12 +361,19 @@ class HRDataGenerator:
             # Determine if employee has left
             attrition = False
             exit_date = None
+            
             if random.random() < attrition_probability:
                 # This employee has left
                 attrition = True
                 # Exit date before current date
                 max_exit_days = min(tenure_days, 365 * 2)  # Most leave within 2 years
-                exit_days = random.randint(30, max_exit_days)
+                
+                # Ensure max_exit_days is at least 30
+                if max_exit_days < 30:
+                    exit_days = max_exit_days  # If less than 30, just use the max available
+                else:
+                    exit_days = random.randint(30, max_exit_days)
+                
                 exit_date = self.current_date - timedelta(days=exit_days)
             
             # Only include this employee if they're still active or left within our timeframe
