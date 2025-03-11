@@ -1035,11 +1035,11 @@
         },
         "narwhals": {
             "hashes": [
-                "sha256:2f68cfbb2562672c4dfa54f158ed8c2828e9920ef784981cd9114e419c444216",
-                "sha256:c408acf09e90c116f247cf34f24a3a89d147e3e235b1d3c708cfd1960baf320a"
+                "sha256:0c50cc67a5404da501302882838ec17dce51703d22cd8ad89162d6f60ea0bb19",
+                "sha256:443aa0a1abfae89bc65a6b888a7e310a03d1818bfb2ccd61c150199a5f954c17"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==1.29.1"
+            "version": "==1.30.0"
         },
         "nbclient": {
             "hashes": [

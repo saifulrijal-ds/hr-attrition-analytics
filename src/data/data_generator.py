@@ -204,8 +204,12 @@ class HRDataGenerator:
         employee_id = 10001
         
         # Generate current employees and past employees (who have left)
-        total_to_generate = int(num_employees * 1.3)  # Generate 30% more to account for attrition
+        total_to_generate = int(num_employees * 1.5)  # Generate 50% more to account for attrition
         
+        current_employees_count = 0
+        departed_employees_count = 0
+        desired_attrition_rate = 0.25 # Target a more realistic 25% historical attrition rate
+
         for i in range(total_to_generate):
             # Basic employee info
             first_name = random.choice(self.indonesian_first_names)
@@ -355,13 +359,25 @@ class HRDataGenerator:
             )
             
             # Normalize attrition score to probability (0-1)
-            max_possible_score = 30  # Approximate maximum possible score
-            attrition_probability = min(0.95, attrition_score / max_possible_score)
+            max_possible_score = 60 # Increased from 30 to reduce probabilities
+            attrition_probability = min(0.90, attrition_score / max_possible_score)
+
+            # Further reduce attrition probability to get more realistic rates
+            attrition_probability *= 0.5
             
             # Determine if employee has left
             attrition = False
             exit_date = None
-            
+
+            # Check if we should consider this employee for attrition based on current counts
+            current_total_employees = current_employees_count + departed_employees_count
+            current_attrition_rate = departed_employees_count / max(1, current_total_employees)
+
+            # Skip creating any more departed employees if we're already over the target attrition rate
+            # and we have enough current employees
+            if current_employees_count >= num_employees and current_attrition_rate >= desired_attrition_rate:
+                attrition = False
+            # Otherwhise, apply the calculated attrition probability    
             if random.random() < attrition_probability:
                 # This employee has left
                 attrition = True
@@ -407,16 +423,25 @@ class HRDataGenerator:
                 
                 if exit_date:
                     employee['ExitDate'] = exit_date
+                    departed_employees_count += 1
+                else:
+                    current_employees_count += 1
                 
                 employees.append(employee)
                 employee_id += 1
                 
-                # Break if we've reached the desired number of current employees
-                if not attrition and len([e for e in employees if not e.get('Attrition')]) >= num_employees:
+                # Break if we've reached the desired number of current employees and a reasonable number of departed employees
+                target_departed = int(num_employees * desired_attrition_rate)
+                if current_employees_count >= num_employees and departed_employees_count >= target_departed:
                     break
         
         # Convert to DataFrame
         df = pd.DataFrame(employees)
+
+        print(f"Generated {len(df)} total employees:")
+        print(f" - Current employees: {current_employees_count}")
+        print(f" - Departed employees: {departed_employees_count}")
+        print(f" - Attrition rate: {departed_employees_count / len(df):.2%}")
         
         return df
     

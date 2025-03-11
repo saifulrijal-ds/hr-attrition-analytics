@@ -10,12 +10,12 @@ scikit-learn = "*"
 matplotlib = "*"
 seaborn = "*"
 plotly = "*"
-streamlit = "*"
 xgboost = "*"
 lightgbm = "*"
 shap = "*"
 tqdm = "*"
 python-dotenv = "*"
+streamlit = "*"
 
 [dev-packages]
 
