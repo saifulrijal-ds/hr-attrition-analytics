@@ -1,0 +1,5 @@
+outs:
+- md5: fa481e29388c0c8a4b0c45fc1f46707a
+  size: 162800
+  hash: md5
+  path: exit_interviews.csv

@@ -1,0 +1,21 @@
+[project]
+name = "hr-attrition-analytics"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "dagshub>=0.5.9",
+    "jupyter>=1.1.1",
+    "lightgbm>=4.6.0",
+    "mlflow>=2.20.3",
+    "pandas>=2.2.3",
+    "plotly>=6.0.0",
+    "python-dotenv>=1.0.1",
+    "scikit-learn>=1.6.1",
+    "seaborn>=0.13.2",
+    "shap>=0.47.0",
+    "streamlit>=1.43.1",
+    "tqdm>=4.67.1",
+    "xgboost>=2.1.4",
+]

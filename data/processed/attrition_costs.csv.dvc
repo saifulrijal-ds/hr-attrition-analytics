@@ -1,0 +1,5 @@
+outs:
+- md5: a2322be638b8b96e68f017232ce99d0c
+  size: 600420
+  hash: md5
+  path: attrition_costs.csv

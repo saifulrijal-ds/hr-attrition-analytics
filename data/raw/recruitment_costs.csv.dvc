@@ -1,0 +1,5 @@
+outs:
+- md5: 86ee5eb011346df230a404cbe4524bbb
+  size: 982
+  hash: md5
+  path: recruitment_costs.csv

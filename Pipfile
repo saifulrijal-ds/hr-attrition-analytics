@@ -16,6 +16,8 @@ shap = "*"
 tqdm = "*"
 python-dotenv = "*"
 streamlit = "*"
+dagshub = "*"
+mlflow = "*"
 
 [dev-packages]
 

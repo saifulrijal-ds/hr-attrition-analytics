@@ -1,0 +1,5 @@
+outs:
+- md5: 5578273c0c65bd982aad5cc6363f85e1
+  size: 320320
+  hash: md5
+  path: promotions.csv

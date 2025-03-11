@@ -170,22 +170,22 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-# Data files (might contain sensitive information)
-data/raw/
-data/processed/
-data/external/
-*.csv
-*.xlsx
-*.xls
-*.db
-*.sqlite3
+# # Data files (might contain sensitive information)
+# data/raw/
+# data/processed/
+# data/external/
+# *.csv
+# *.xlsx
+# *.xls
+# *.db
+# *.sqlite3
 
-# Model files
-data/models/
-*.pkl
-*.joblib
-*.h5
+# # Model files
+# data/models/
+# *.pkl
+# *.joblib
+# *.h5
 
-# Logs
-logs/
-*.log
+# # Logs
+# logs/
+# *.log
