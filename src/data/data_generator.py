@@ -364,7 +364,7 @@ class HRDataGenerator:
             attrition_probability = min(0.90, attrition_score / max_possible_score)
 
             # Further reduce attrition probability to get more realistic rates
-            attrition_probability *= 0.9
+            attrition_probability *= 0.8
             
             # Determine if employee has left
             attrition = False
