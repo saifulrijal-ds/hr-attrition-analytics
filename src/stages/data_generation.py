@@ -38,13 +38,12 @@ def main():
     generator = HRDataGenerator(seed=params['company']['random_seed'])
     
     # Modify the generator's attrition rate
-    # generator.desired_attrition_rate = active_scenario['rate']
+    generator.desired_attrition_rate = active_scenario['rate']
     
     # Generate data
     data_dict = generator.generate_all_data(
         num_employees=params['company']['num_employees'],
         historical_years=params['company']['historical_years'],
-        desired_attrition_rate=active_scenario['rate']
     )
     
     # Create output directory if it doesn't exist

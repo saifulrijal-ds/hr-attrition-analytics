@@ -182,8 +182,10 @@ class HRDataGenerator:
             'age_factor': 0.5,  # Younger employees tend to leave more
             'tenure_factor': 1.0,  # Short tenure increases attrition risk
         }
-   
-    def generate_employee_data(self, num_employees=1000, historical_years=3, desired_attrition_rate=0.5):
+
+        self.desired_attrition_rate=0.5
+
+    def generate_employee_data(self, num_employees=1000, historical_years=3):
         """
         Generate employee data for the specified number of employees.
         
@@ -371,6 +373,8 @@ class HRDataGenerator:
             # Check if we should consider this employee for attrition based on current counts
             current_total_employees = current_employees_count + departed_employees_count
             current_attrition_rate = departed_employees_count / max(1, current_total_employees)
+
+            desired_attrition_rate=self.desired_attrition_rate
 
             # Skip creating any more departed employees if we're already over the target attrition rate
             # and we have enough current employees
