@@ -117,8 +117,8 @@ def main():
             "test_start_date": split_params['test_start_date'],
             "train_size": len(train_df),
             "test_size": len(test_df),
-            "train_attrition_rate": train_df['Attrition'].mean().values,
-            "test_attrition_rate": test_df['Attrition'].mean().values
+            "train_attrition_rate": str(train_df['Attrition'].mean()),
+            "test_attrition_rate": str(test_df['Attrition'].mean())
         }, f)
     
     print("Data preprocessing and splitting complete!")
