@@ -78,19 +78,19 @@ stages:
     params:
       params.yaml:
         split:
-          method: status
+          method: hire_date
           train_end_date: '2023-12-31'
           test_start_date: '2024-01-01'
     outs:
     - path: data/stages/preprocessed/split_metadata.yaml
       hash: md5
-      md5: af1dd1cd759283a74159e24bc4c87197
-      size: 183
+      md5: 984a8608fc77a14cc2f3f3a77512429b
+      size: 203
     - path: data/stages/preprocessed/test_data.csv
       hash: md5
-      md5: be80f63f37bc822826adaaaa3011713f
-      size: 759362
+      md5: 93d41dab2191b24990c5d6a22a040c0b
+      size: 268075
     - path: data/stages/preprocessed/train_data.csv
       hash: md5
-      md5: f4b0288f42d34b2d109a14b34d25d464
-      size: 81792
+      md5: 7f10dc5edfe2ee5f5af7759063f45dfb
+      size: 844794
