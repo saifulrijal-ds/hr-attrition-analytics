@@ -5,6 +5,7 @@ import os
 import sys
 import yaml
 import importlib.util
+from datetime import datetime
 
 # Add the project root to the path to import the data generator
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
@@ -57,7 +58,7 @@ def main():
         yaml.dump({
             "company": params['company'],
             "attrition_scenario": active_scenario,
-            "generation_date": str(os.path.getmtime("params.yaml")),
+            "generation_date": datetime.fromtimestamp(os.path.getmtime("params.yaml")),
         }, f)
     
     print("Data generation complete!")
