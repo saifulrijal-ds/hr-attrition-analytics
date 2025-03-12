@@ -64,3 +64,33 @@ stages:
       hash: md5
       md5: 241713abb2d5f083867a3e6acac2b0a4
       size: 3803223
+  preprocess:
+    cmd: python src/stages/data_preprocessing.py
+    deps:
+    - path: data/stages/raw/employees.csv
+      hash: md5
+      md5: fad7d8b001432576960f4985e08c27be
+      size: 1123092
+    - path: src/stages/data_preprocessing.py
+      hash: md5
+      md5: 47c1261f8beaf6510671fa240b925c72
+      size: 4728
+    params:
+      params.yaml:
+        split:
+          method: status
+          train_end_date: '2023-12-31'
+          test_start_date: '2024-01-01'
+    outs:
+    - path: data/stages/preprocessed/split_metadata.yaml
+      hash: md5
+      md5: 7271d437290ff15a282556d495527ef7
+      size: 484
+    - path: data/stages/preprocessed/test_data.csv
+      hash: md5
+      md5: 68f0d3028743eccc7718e58eda4782fa
+      size: 759362
+    - path: data/stages/preprocessed/train_data.csv
+      hash: md5
+      md5: cfb1bf34b8518fa2c276c096146a236e
+      size: 81792
