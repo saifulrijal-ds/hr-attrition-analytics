@@ -17,7 +17,7 @@ stages:
           normal:
             rate: 0.5
             description: Normal market conditions
-            is_active: true
+            is_active: false
           low_stress:
             rate: 0.35
             description: Low competition, high retention period
@@ -25,7 +25,7 @@ stages:
           high_stress:
             rate: 0.65
             description: High competition or restructuring period
-            is_active: false
+            is_active: true
         company:
           name: BFI Finance Indonesia
           num_employees: 4000
@@ -34,23 +34,23 @@ stages:
     outs:
     - path: data/stages/raw/employees.csv
       hash: md5
-      md5: 667cfd3c2da849a0874962ed4878faf2
+      md5: 45ce1d579637d95dfcc4caa7cc51fa7a
       size: 1123092
     - path: data/stages/raw/exit_interviews.csv
       hash: md5
-      md5: 0ec60b4eb3b5ff3df2a90baeec3bc8e0
+      md5: 30afba1e908a631b3cb87b12e75b3b98
       size: 240033
     - path: data/stages/raw/metadata.yaml
       hash: md5
-      md5: 6dc0a77a46914f1d8425242d378f9a69
-      size: 235
+      md5: 0366e346fa4a95e5e94336b1e3c6ef5d
+      size: 252
     - path: data/stages/raw/performance.csv
       hash: md5
       md5: ae6fa03d66d9c667283299b1f7d0f7ef
       size: 3016679
     - path: data/stages/raw/promotions.csv
       hash: md5
-      md5: 5674d7e493a93864b4edbd9605367d4e
+      md5: bddaf1c7e2f0e4601c20a7342e8200dd
       size: 665466
     - path: data/stages/raw/recruitment_costs.csv
       hash: md5
@@ -58,18 +58,18 @@ stages:
       size: 990
     - path: data/stages/raw/surveys.csv
       hash: md5
-      md5: aaa5c4ecdeeab5ac473cea018cca910d
+      md5: 782015fc24935639a3c0a038219240e8
       size: 6866470
     - path: data/stages/raw/training.csv
       hash: md5
-      md5: 63f7c0026a64e60d165b237d6cd4771a
+      md5: ce1375b9b4bf13d09830519ec022bab1
       size: 3803223
   preprocess:
     cmd: python src/stages/data_preprocessing.py
     deps:
     - path: data/stages/raw/employees.csv
       hash: md5
-      md5: 667cfd3c2da849a0874962ed4878faf2
+      md5: 45ce1d579637d95dfcc4caa7cc51fa7a
       size: 1123092
     - path: src/stages/data_preprocessing.py
       hash: md5
@@ -88,9 +88,9 @@ stages:
       size: 203
     - path: data/stages/preprocessed/test_data.csv
       hash: md5
-      md5: 93d41dab2191b24990c5d6a22a040c0b
+      md5: 02703c37ea1069511f80bd52bc2036b1
       size: 268075
     - path: data/stages/preprocessed/train_data.csv
       hash: md5
-      md5: 7f10dc5edfe2ee5f5af7759063f45dfb
+      md5: 840f76713520ed6d2cccae2601c8e631
       size: 844794

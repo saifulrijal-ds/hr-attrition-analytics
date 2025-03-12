@@ -10,7 +10,7 @@ attrition_scenarios:
   normal:
     rate: 0.50  # ~13% annual over 5 years
     description: "Normal market conditions"
-    is_active: true
+    is_active: false
   low_stress:
     rate: 0.35  # ~8% annual over 5 years
     description: "Low competition, high retention period"
@@ -18,7 +18,7 @@ attrition_scenarios:
   high_stress:
     rate: 0.65  # ~19% annual over 5 years
     description: "High competition or restructuring period"
-    is_active: false
+    is_active: true
 
 # Data splitting parameters
 split:
