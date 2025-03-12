@@ -1,0 +1,66 @@
+schema: '2.0'
+stages:
+  generate_data:
+    cmd: python src/stages/data_generation.py
+    deps:
+    - path: src/data/data_generator.py
+      hash: md5
+      md5: 9a8672a58820cbaa3a5cbab8162048d0
+      size: 69080
+    - path: src/stages/data_generation.py
+      hash: md5
+      md5: 563bbc2b6424c38b07a74644125ad5d9
+      size: 2217
+    params:
+      params.yaml:
+        attrition_scenarios:
+          normal:
+            rate: 0.5
+            description: Normal market conditions
+            is_active: true
+          low_stress:
+            rate: 0.35
+            description: Low competition, high retention period
+            is_active: false
+          high_stress:
+            rate: 0.65
+            description: High competition or restructuring period
+            is_active: false
+        company:
+          name: BFI Finance Indonesia
+          num_employees: 4000
+          historical_years: 5
+          random_seed: 42
+    outs:
+    - path: data/stages/raw/employees.csv
+      hash: md5
+      md5: fad7d8b001432576960f4985e08c27be
+      size: 1123092
+    - path: data/stages/raw/exit_interviews.csv
+      hash: md5
+      md5: 8eb6fd9fd6fea0fccad3cfec6271ca30
+      size: 240033
+    - path: data/stages/raw/metadata.yaml
+      hash: md5
+      md5: e80b2b19016a7e8447e51227cac0731f
+      size: 229
+    - path: data/stages/raw/performance.csv
+      hash: md5
+      md5: ae6fa03d66d9c667283299b1f7d0f7ef
+      size: 3016679
+    - path: data/stages/raw/promotions.csv
+      hash: md5
+      md5: c50be14efea490aedcba6a7d1595ef31
+      size: 665466
+    - path: data/stages/raw/recruitment_costs.csv
+      hash: md5
+      md5: 8ed945455d823b8475b9c3f18c9ecfbf
+      size: 990
+    - path: data/stages/raw/surveys.csv
+      hash: md5
+      md5: 3e7460386857796170bd78a13c403e23
+      size: 6866470
+    - path: data/stages/raw/training.csv
+      hash: md5
+      md5: 241713abb2d5f083867a3e6acac2b0a4
+      size: 3803223
