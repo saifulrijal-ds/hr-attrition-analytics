@@ -1,0 +1,43 @@
+# Company simulation parameters
+company:
+  name: "BFI Finance Indonesia"
+  num_employees: 4000
+  historical_years: 5
+  random_seed: 42
+
+# Attrition scenarios
+attrition_scenarios:
+  normal:
+    rate: 0.50  # ~13% annual over 5 years
+    description: "Normal market conditions"
+    is_active: true
+  low_stress:
+    rate: 0.35  # ~8% annual over 5 years
+    description: "Low competition, high retention period"
+    is_active: false
+  high_stress:
+    rate: 0.65  # ~19% annual over 5 years
+    description: "High competition or restructuring period"
+    is_active: false
+
+# Data splitting parameters
+split:
+  method: "date"
+  train_end_date: "2023-12-31"
+  test_start_date: "2024-01-01"
+
+# Feature engineering parameters
+features:
+  categorical_encoding: "one-hot"
+  include_interaction_terms: true
+  standardize_numeric: true
+
+# Model parameters
+model:
+  type: "random_forest"
+  target: "Attrition"
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10
+    min_samples_split: 10
+    class_weight: "balanced"

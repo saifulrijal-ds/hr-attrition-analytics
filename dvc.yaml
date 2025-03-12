@@ -1,0 +1,18 @@
+stages:
+  generate_data:
+    cmd: python src/stages/data_generation.py
+    deps:
+    - src/data/data_generator.py
+    - src/stages/data_generation.py
+    params:
+    - attrition_scenarios
+    - company
+    outs:
+    - data/stages/raw/employees.csv
+    - data/stages/raw/exit_interviews.csv
+    - data/stages/raw/metadata.yaml
+    - data/stages/raw/performance.csv
+    - data/stages/raw/promotions.csv
+    - data/stages/raw/recruitment_costs.csv
+    - data/stages/raw/surveys.csv
+    - data/stages/raw/training.csv
