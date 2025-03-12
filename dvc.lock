@@ -5,23 +5,23 @@ stages:
     deps:
     - path: src/data/data_generator.py
       hash: md5
-      md5: 03975e985f012f13d569878df4f0a9b7
-      size: 69080
+      md5: 7392d0190984d983f726d622520eeb44
+      size: 69305
     - path: src/stages/data_generation.py
       hash: md5
-      md5: a6498f1dd34706e8ba2c443b70ef124f
-      size: 2266
+      md5: d122c69bb80dbe05524a94619a0fb62c
+      size: 2323
     params:
       params.yaml:
         attrition_scenarios:
           normal:
             rate: 0.5
             description: Normal market conditions
-            is_active: true
+            is_active: false
           low_stress:
             rate: 0.35
             description: Low competition, high retention period
-            is_active: false
+            is_active: true
           high_stress:
             rate: 0.65
             description: High competition or restructuring period
@@ -34,43 +34,43 @@ stages:
     outs:
     - path: data/stages/raw/employees.csv
       hash: md5
-      md5: 9cae3d3c80af127766f869a31790280f
-      size: 1189834
+      md5: b0a3b5d0dd209d9d0747086a28c80ec9
+      size: 1148910
     - path: data/stages/raw/exit_interviews.csv
       hash: md5
-      md5: 3a777d62cb214f39a5c4fe2b56cf49a7
-      size: 726229
+      md5: 0a80fe37567a01224ac31846fd361b2f
+      size: 436978
     - path: data/stages/raw/metadata.yaml
       hash: md5
-      md5: f1e21625aa066aea2424180b9b9bc2d5
-      size: 235
+      md5: 5f358bf535a759163cf98836a83248a8
+      size: 250
     - path: data/stages/raw/performance.csv
       hash: md5
-      md5: 004cda65827b3a85be671f05194cfa84
-      size: 2490107
+      md5: acc213f0c732d978fccfee06462d2661
+      size: 2759756
     - path: data/stages/raw/promotions.csv
       hash: md5
-      md5: d0ee89e030c4d86839494cd8a7872086
-      size: 663081
+      md5: 03773348098a78b9016a1d723a204228
+      size: 651809
     - path: data/stages/raw/recruitment_costs.csv
       hash: md5
-      md5: d3cbafe4148319ba5d11f2297c82e81a
-      size: 983
+      md5: 45fd38d52d0e4f027f99f138c3d3547b
+      size: 982
     - path: data/stages/raw/surveys.csv
       hash: md5
-      md5: 20c861675f3e1f744f863f9a54c8e61b
-      size: 4632343
+      md5: ced24b1fb8e2d6badd55bcb345976580
+      size: 5913189
     - path: data/stages/raw/training.csv
       hash: md5
-      md5: 21b1ef9a0076b8d87b7a5cc79c90c080
-      size: 2919664
+      md5: 253eb0fda17e13767dd033c8b4b02d13
+      size: 3394373
   preprocess:
     cmd: python src/stages/data_preprocessing.py
     deps:
     - path: data/stages/raw/employees.csv
       hash: md5
-      md5: 9cae3d3c80af127766f869a31790280f
-      size: 1189834
+      md5: b0a3b5d0dd209d9d0747086a28c80ec9
+      size: 1148910
     - path: src/stages/data_preprocessing.py
       hash: md5
       md5: f866dcc0b0087d197e896f4bdb25c64e
@@ -84,13 +84,13 @@ stages:
     outs:
     - path: data/stages/preprocessed/split_metadata.yaml
       hash: md5
-      md5: 40052185450a88274264802ae84259a4
-      size: 201
+      md5: 17a2169d5bb8b7c2c364b4bbc06d66f9
+      size: 203
     - path: data/stages/preprocessed/test_data.csv
       hash: md5
-      md5: 4246c8b565a32cb72bf4db4b1d0ec291
-      size: 277623
+      md5: b7e66d52d899dbc67d3486ca0b4aa87d
+      size: 277686
     - path: data/stages/preprocessed/train_data.csv
       hash: md5
-      md5: 8236ed53ade4a8d0ee2031eb531904df
-      size: 904820
+      md5: c6c728aa09f116a5474330aaa687ad2d
+      size: 861797

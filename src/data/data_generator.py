@@ -183,9 +183,9 @@ class HRDataGenerator:
             'tenure_factor': 1.0,  # Short tenure increases attrition risk
         }
 
-        self.desired_attrition_rate=0.5
+        # self.desired_attrition_rate=0.5
 
-    def generate_employee_data(self, num_employees=1000, historical_years=3):
+    def generate_employee_data(self, num_employees=1000, historical_years=3, desired_attrition_rate=0.5):
         """
         Generate employee data for the specified number of employees.
         
@@ -360,30 +360,35 @@ class HRDataGenerator:
             )
             
             # Normalize attrition score to probability (0-1)
-            max_possible_score = 30 # Increased from 30 to reduce probabilities
+            # Using a lower max_possible_score to get higher probabilities
+            max_possible_score = 60
             attrition_probability = min(0.90, attrition_score / max_possible_score)
 
-            # Further reduce attrition probability to get more realistic rates
-            attrition_probability *= 0.8
+            # Check current attrition rate
+            current_total = current_employees_count + departed_employees_count
+            current_attrition_rate = departed_employees_count / max(1, current_total)
+            
+            # Adjust probability based on how far we are from the desired rate
+            adjustment_factor = desired_attrition_rate / max(0.01, current_attrition_rate)
+            # Cap the adjustment to prevent extreme values
+            adjustment_factor = min(3.0, max(0.5, adjustment_factor))
+            
+            # Apply the adjustment
+            attrition_probability *= adjustment_factor
             
             # Determine if employee has left
             attrition = False
             exit_date = None
 
-            # Check if we should consider this employee for attrition based on current counts
-            current_total_employees = current_employees_count + departed_employees_count
-            current_attrition_rate = departed_employees_count / max(1, current_total_employees)
-
-            desired_attrition_rate=self.desired_attrition_rate
-
-            # Skip creating any more departed employees if we're already over the target attrition rate
-            # and we have enough current employees
-            if current_employees_count >= num_employees and current_attrition_rate >= desired_attrition_rate:
+            # Only force not having attrition if we've reached enough departed employees
+            if current_employees_count >= num_employees and current_attrition_rate >= self.desired_attrition_rate:
                 attrition = False
-            # Otherwhise, apply the calculated attrition probability    
-            if random.random() < attrition_probability:
+            else:
+                # Apply the calculated probability
+                attrition = random.random() < attrition_probability
+            
+            if attrition:
                 # This employee has left
-                attrition = True
                 # Exit date before current date
                 max_exit_days = min(tenure_days, 365 * 2)  # Most leave within 2 years
                 
@@ -1453,7 +1458,7 @@ class HRDataGenerator:
         
         return recruitment_df
     
-    def generate_all_data(self, num_employees=1000, historical_years=3):
+    def generate_all_data(self, num_employees=1000, historical_years=3, desired_attrition_rate=0.5):
         """
         Generate all datasets needed for the HR analytics project.
         
@@ -1465,7 +1470,7 @@ class HRDataGenerator:
             dict: Dictionary containing all generated DataFrames
         """
         print("Generating employee data...")
-        employee_df = self.generate_employee_data(num_employees, historical_years)
+        employee_df = self.generate_employee_data(num_employees, historical_years, desired_attrition_rate)
         
         print("Generating survey data...")
         survey_df = self.generate_engagement_survey_data(employee_df)
