@@ -16,3 +16,14 @@ stages:
     - data/stages/raw/recruitment_costs.csv
     - data/stages/raw/surveys.csv
     - data/stages/raw/training.csv
+  preprocess:
+    cmd: python src/stages/data_preprocessing.py
+    deps:
+    - data/stages/raw/employees.csv
+    - src/stages/data_preprocessing.py
+    params:
+    - split
+    outs:
+    - data/stages/preprocessed/split_metadata.yaml
+    - data/stages/preprocessed/test_data.csv
+    - data/stages/preprocessed/train_data.csv

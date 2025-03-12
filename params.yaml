@@ -22,7 +22,7 @@ attrition_scenarios:
 
 # Data splitting parameters
 split:
-  method: "date"
+  method: "status"
   train_end_date: "2023-12-31"
   test_start_date: "2024-01-01"
 
