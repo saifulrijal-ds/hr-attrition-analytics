@@ -360,11 +360,11 @@ class HRDataGenerator:
             )
             
             # Normalize attrition score to probability (0-1)
-            max_possible_score = 60 # Increased from 30 to reduce probabilities
+            max_possible_score = 30 # Increased from 30 to reduce probabilities
             attrition_probability = min(0.90, attrition_score / max_possible_score)
 
             # Further reduce attrition probability to get more realistic rates
-            attrition_probability *= 0.5
+            attrition_probability *= 0.9
             
             # Determine if employee has left
             attrition = False
