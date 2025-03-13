@@ -40,3 +40,32 @@ stages:
     - data/stages/features/feature_importance.csv
     - metrics/training_metrics.json
     - models/attrition_model.joblib
+  evaluate:
+    cmd: python src/stages/model_evaluation.py
+    deps:
+    - data/stages/preprocessed/test_data.csv
+    - models/attrition_model.joblib
+    - src/stages/model_evaluation.py
+    outs:
+    - metrics/age_risk.csv
+    - metrics/classification_report.csv
+    - metrics/department_risk.csv
+    - metrics/joblevel_risk.csv
+    - metrics/threshold_analysis.csv
+    metrics:
+    - metrics/evaluation_metrics.json
+    plots:
+    - reports/figures/age_risk.png:
+        cache: false
+    - reports/figures/confusion_matrix.png:
+        cache: false
+    - reports/figures/department_risk.png:
+        cache: false
+    - reports/figures/joblevel_risk.png:
+        cache: false
+    - reports/figures/precision_recall_curve.png:
+        cache: false
+    - reports/figures/roc_curve.png:
+        cache: false
+    - reports/figures/threshold_impact.png:
+        cache: false

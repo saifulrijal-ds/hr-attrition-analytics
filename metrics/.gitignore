@@ -1,1 +1,8 @@
 /training_metrics.json
+/evaluation_metrics.json:accuracy,precision,recall,f1,roc_auc,average_precision
+/evaluation_metrics.json
+/classification_report.csv
+/threshold_analysis.csv
+/department_risk.csv
+/joblevel_risk.csv
+/age_risk.csv

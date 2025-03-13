@@ -145,3 +145,71 @@ stages:
       hash: md5
       md5: 400cea5dc1c201cc2356f1be77dacb04
       size: 1626767
+  evaluate:
+    cmd: python src/stages/model_evaluation.py
+    deps:
+    - path: data/stages/preprocessed/test_data.csv
+      hash: md5
+      md5: b7e66d52d899dbc67d3486ca0b4aa87d
+      size: 277686
+    - path: models/attrition_model.joblib
+      hash: md5
+      md5: 400cea5dc1c201cc2356f1be77dacb04
+      size: 1626767
+    - path: src/stages/model_evaluation.py
+      hash: md5
+      md5: ef63d15670678d0f84855981c62c743b
+      size: 14961
+    outs:
+    - path: metrics/age_risk.csv
+      hash: md5
+      md5: 0ee5a2241cd0a32ad0b6f195e5238d53
+      size: 129
+    - path: metrics/classification_report.csv
+      hash: md5
+      md5: abf023cd3933e22f4e4df0f32969119c
+      size: 401
+    - path: metrics/department_risk.csv
+      hash: md5
+      md5: 395814660436df2cf06fac420df6fb11
+      size: 319
+    - path: metrics/evaluation_metrics.json
+      hash: md5
+      md5: 1cc82d32b58cb8ef45e5df33a13184d0
+      size: 567
+    - path: metrics/joblevel_risk.csv
+      hash: md5
+      md5: 5a2a0b777b278b0f1b143adf8292a1ce
+      size: 230
+    - path: metrics/threshold_analysis.csv
+      hash: md5
+      md5: e4feaabc2dd3036ea10306793deb6ec1
+      size: 832
+    - path: reports/figures/age_risk.png
+      hash: md5
+      md5: 4e19aeba60892bc674a6dd441614f4a7
+      size: 95709
+    - path: reports/figures/confusion_matrix.png
+      hash: md5
+      md5: d264b579daa7aed8f68f1f0e8b795536
+      size: 84160
+    - path: reports/figures/department_risk.png
+      hash: md5
+      md5: 595d991e1f4793dcb732ce4aafd423e2
+      size: 164832
+    - path: reports/figures/joblevel_risk.png
+      hash: md5
+      md5: 4f9e8f8ee98a6f88796ba7a0fdede692
+      size: 91574
+    - path: reports/figures/precision_recall_curve.png
+      hash: md5
+      md5: 11a18a5069ded4508cd4b68c031df44b
+      size: 105882
+    - path: reports/figures/roc_curve.png
+      hash: md5
+      md5: e9b629c6c8c791785b87532cce849415
+      size: 144097
+    - path: reports/figures/threshold_impact.png
+      hash: md5
+      md5: c50fbe3f3245109189f262f3c8d36428
+      size: 168524
