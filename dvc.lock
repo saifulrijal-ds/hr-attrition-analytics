@@ -94,3 +94,54 @@ stages:
       hash: md5
       md5: c6c728aa09f116a5474330aaa687ad2d
       size: 861797
+  train:
+    cmd: python src/stages/model_training.py
+    deps:
+    - path: data/stages/preprocessed/train_data.csv
+      hash: md5
+      md5: c6c728aa09f116a5474330aaa687ad2d
+      size: 861797
+    - path: src/stages/model_training.py
+      hash: md5
+      md5: 8f57d8e7c0d40ae7f0fd7f0121471fc8
+      size: 16464
+    params:
+      params.yaml:
+        features:
+          categorical_encoding: one-hot
+          standardize_numeric: true
+          include_interaction_terms: false
+          add_performance_categories: false
+        mlflow:
+          dagshub_repo_name: hr-attrition-analytics
+          dagshub_repo_owner: saifulrijal873
+        model:
+          type: lightgbm_sklearn
+          n_estimators: 500
+          num_leaves: 31
+          learning_rate: 0.05
+          feature_fraction: 0.9
+          bagging_fraction: 0.8
+          bagging_freq: 5
+          class_weight: balanced
+          max_depth: 7
+          min_child_samples: 20
+          reg_alpha: 0.1
+          reg_lambda: 0.1
+          boosting_type: gbdt
+          objective: binary
+          metric: auc
+          n_jobs: -1
+    outs:
+    - path: data/stages/features/feature_importance.csv
+      hash: md5
+      md5: ec8fba924c150950e273e6e040dc251d
+      size: 1491
+    - path: metrics/training_metrics.json
+      hash: md5
+      md5: f5914bb60854af60708c572d8fc740f4
+      size: 561
+    - path: models/attrition_model.joblib
+      hash: md5
+      md5: 400cea5dc1c201cc2356f1be77dacb04
+      size: 1626767

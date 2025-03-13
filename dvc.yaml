@@ -27,3 +27,16 @@ stages:
     - data/stages/preprocessed/split_metadata.yaml
     - data/stages/preprocessed/test_data.csv
     - data/stages/preprocessed/train_data.csv
+  train:
+    cmd: python src/stages/model_training.py
+    deps:
+    - data/stages/preprocessed/train_data.csv
+    - src/stages/model_training.py
+    params:
+    - features
+    - mlflow
+    - model
+    outs:
+    - data/stages/features/feature_importance.csv
+    - metrics/training_metrics.json
+    - models/attrition_model.joblib
